@@ -423,7 +423,7 @@ module EZGUI {
          * shared by all components
          */
         protected drawText() {
-
+            
             if (this._settings && this._settings.text!=undefined && this.rootSprite) {
                 //var settings = this.theme.applySkin(this._settings);
                 var settings = this._settings;
@@ -922,13 +922,19 @@ module EZGUI {
 
 
             if (settings.bgTiling) {
-                if (settings.bgTiling == "x") {
-                    
+                if (settings.bgTiling === "x") {
+
                     bg.tileScale.y = (settings.height - cfg.bgPadding * 2) / cfg.texture.height;
                 }
 
-                if (settings.bgTiling == "y") {
-                    
+                else if (settings.bgTiling === "y") {
+
+                    bg.tileScale.x = (settings.width - cfg.bgPadding * 2) / cfg.texture.width;
+                }
+
+                else if (settings.bgTiling === "xy") {
+
+                    bg.tileScale.y = (settings.height - cfg.bgPadding * 2) / cfg.texture.height;
                     bg.tileScale.x = (settings.width - cfg.bgPadding * 2) / cfg.texture.width;
                 }
 
